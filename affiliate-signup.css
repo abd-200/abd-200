@@ -1,0 +1,67 @@
+/* Styles for both signup and login forms to maintain consistancy */
+/* Signifies uniform approach and visual styling in auth */
+.auth-container {
+  max-width: 500px;
+  margin: 50px auto; /* Focus in a clear section/content flow with alignment.*/
+  padding: 30px;
+  background-color: #fff; /* Establishes great seperation on primary contents */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Gives elegant 3d approach from surface - UI effect */
+  text-align: center; /* Alignment and organization */
+}
+
+/* Creates great typography with emphasis with element display type.*/
+.auth-container h2 {
+  color: #333; /* Maintains consistent/dark readable tones for focus and layout UX principles */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Further styling for readability/engagement and display elements. The best readable designs rely on typography above element styles with element and surface styling at high importance*/
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Element design with UI principles for visibility*/
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-weight: bold; /* Highlights input field elements */
+}
+
+/* Common modern standards to implement on user engagement surfaces*/
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"],
+.form-group input[type="url"] {
+  width: 100%; /* Adaptiveness is assured to max of display area.*/
+  padding: 12px; /* Spaciousness is prioritized on all elements/text within, improving UI feedback.*/
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="url"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px; /* Increased sizing to ensure good touch response with interaction for buttons - 7 point system design */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Intuitive state-selection of buttons to indicate engagement surfaces exist - modern user approach .*/
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #367c39; /* Color queue system is created to offer clear indications at visual queue */
+}

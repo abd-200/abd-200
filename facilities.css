@@ -1,0 +1,48 @@
+/* Add specific styles for the facilities page here */
+.facilities-section {
+  padding: 40px 20px;
+}
+
+.facilities-section h2 {
+  font-size: 2.5em;
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.facility {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.facility h3 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.facility ul {
+  list-style: none;
+  padding: 0;
+}
+
+.facility ul li {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.facility ul li a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.facility ul li a:hover {
+  text-decoration: underline;
+}

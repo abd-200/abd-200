@@ -1,0 +1,29 @@
+/* Add specific styles for the about page here */
+.about-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  color: #4caf50;
+  margin-bottom: 30px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-text {
+  max-width: 800px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.about-text p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #666;
+}
