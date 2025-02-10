@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم التسويق بالعمولة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+         /* Reset some basic elements */
+        body, h1, h2, p, form {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;  /* Change font if desired */
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0056b3;  /* A slightly brighter shade */
+        }
+
+        /* Styling for sections in the dashboard */
+        section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        input[type="file"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;  /* Slightly darker blue on hover */
+        }
+        /*Table Styles*/
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        a {
+             color: #007bff; /* Adjust the link color as needed */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        /* Add some subtle hover effects */
+         a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>لوحة تحكم التسويق بالعمولة</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">العملاء المحتملون</a></li>
+                <li><a href="#">الإعدادات</a></li>
+                <li><a href="logout.php">تسجيل الخروج</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="profile-info">
+                <h2>معلومات الملف الشخصي</h2>
+                <p>مرحباً بك! (User's Name)</p>  <!-- Placeholder -->
+            </section>
+
+            <section id="statistics">
+                <h2>إحصائيات الأداء</h2>
+                 <!-- Placeholder content -->
+                <p>مجموع العملاء المحتملين: 120</p>
+                <p>العمولات المستحقة: 500$</p>
+            </section>
+
+            <section id="add-leads">
+                <h2>إضافة عميل محتمل</h2>
+                <form id="lead-form">
+                    <label for="lead-name">اسم العميل:</label>
+                    <input type="text" id="lead-name" name="lead-name" required>
+
+                    <label for="lead-phone">رقم هاتف العميل:</label>
+                    <input type="tel" id="lead-phone" name="lead-phone" required>
+
+                    <label for="lead-screenshot">لقطة شاشة (دليل):</label>
+                    <input type="file" id="lead-screenshot" name="lead-screenshot" accept="image/*" required>
+
+                    <button type="submit">إرسال</button>
+                </form>
+            </section>
+            <section id="commission-requests">
+               <h2>طلبات العمولة</h2>
+                <p>ارفع طلبات العمولة هنا للموافقة عليها من قبل إدارة الموقع.</p>
+               <button type="button" class="request-button">تقديم طلب العمولة</button>
+            </section>
+          
+          <section id="customer-requests">
+                <h2>طلبات المستخدمين</h2>
+                 <!-- Table Styles -->
+               <div class="customer-requests">
+                    <div class="request">
+                        <div class="request-header">
+                        <span>اسم الزائر</span>
+                        <span>تاريخ الزيارة</span>
+                         </div>
+                        <div class="request-detail">
+                             <span>أرسل المستخدم طلب بخصوص باقات ورحلات سياحية</span>
+                              <span> 1/2/2024</span>
+                        </div>
+
+                    </div>
+
+                    <div class="request">
+                         <div class="request-header">
+                        <span>اسم الزائر</span>
+                        <span>تاريخ الزيارة</span>
+                         </div>
+                         <div class="request-detail">
+                              <span>أرسل المستخدم طلب بخصوص تذاكر فعاليات في عجلون</span>
+                              <span> 5/2/2024</span>
+                        </div>
+                    </div>
+            </section>
+
+          <section id="current-promotions">
+                <h2>العروض الحالية</h2>
+                 <ul>
+                     <li>عرض اليوم : 20% على تذاكر تلفريك عجلون </li>
+                     <li>تخفيضات الصيف بدأت تصل إلي 30% على الفنادق داخل عجلون </li>
+                     <li>يمكنك الأن القيام بحجز 3 ليالي ب40 دينار فقط !! </li>
+                </ul>
+
+                </ol>
+
+            </section>
+            <!-- Add other sections (commissions, settings, etc.) here -->
+        </main>
+
+        <footer>
+           <p>© 2025 سياحة عجلون</p>
+        </footer>
+    </div>
+</body>
+</html>

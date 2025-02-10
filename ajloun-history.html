@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تاريخ عجلون</title>
+     <meta name="description" content="استكشف تاريخ عجلون العريق، من العصور القديمة إلى العصر الحديث، واكتشف أهم المعالم التاريخية مثل قلعة عجلون.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+            <style>
+/* تصميم Header مع إضافة Dark mode واللغة هنا، إذا لم يكن موجودًا في styles.css */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-container {
+    display: flex;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+        </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>تاريخ عجلون</h1>
+        <div class="toggle-container">
+            <button id="language-toggle" class="toggle-button" aria-label="تغيير اللغة"><i class="fas fa-globe"></i></button>
+            <button id="dark-mode-toggle" class="toggle-button" aria-label="تبديل الوضع الداكن"><i class="fas fa-moon"></i></button>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="unique-destinations.html">وجهات سياحية فريدة</a></li>
+            <li><a href="ajloun-history.html" class="active">تاريخ عجلون</a></li>
+            <li><a href="plan-trip.html">تخطيط الرحلة</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <img src="images/ajloun-castle-hero.jpg" alt="قلعة عجلون شامخة في سماء عجلون" class="hero-image">
+        <div class="hero-text">
+            <h2>استكشف تاريخ عجلون العريق</h2>
+            <p>انطلق في رحلة عبر الزمن واكتشف كنوز الماضي</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <article>
+            <!-- أصل التسمية والموقع -->
+            <section>
+                <h2>أصل التسمية والموقع</h2>
+                <img src="images/ajloun-landscape.jpg" alt="منظر طبيعي خلاب يظهر طبيعة عجلون الجبلية">
+                <p class="lead">عجلون، جوهرة الشمال الأردني، هي محافظة ذات طبيعة خلابة وتاريخ عريق. يتردد اسمها بين أزقة التاريخ كشاهد على حضارات تعاقبت وتركت بصماتها على هذه الأرض الطيبة.</p>
+                <p>يُشتق اسم عجلون من "عجلوني"، وهو اسم أمير أو راهب سكن المنطقة في العصور القديمة. تتميز عجلون بموقعها الاستراتيجي الذي يشرف على أجزاء واسعة من شمال الأردن، وتضاريسها الجبلية التي تكسوها الغابات الخضراء.</p>
+            </section>
+
+            <!-- عجلون عبر العصور -->
+            <section>
+                <h2>عجلون عبر العصور</h2>
+                <p class="lead">تعاقبت على عجلون حضارات عديدة، تركت آثارها في كل زاوية من زواياها، بدءًا من العصور القديمة وصولًا إلى العصر الحديث.</p>
+
+                <!-- العصور القديمة -->
+                <h3>العصور القديمة</h3>
+                <img src="images/roman-ruins-ajloun.jpg" alt="آثار رومانية قديمة في محافظة عجلون">
+                <p>كانت عجلون مأهولة بالسكان منذ العصر الروماني، حيث كانت تعرف باسم "جراسا" الصغرى. شهدت المنطقة ازدهارًا زراعيًا وتجاريًا، وتوجد فيها آثار تدل على ذلك، مثل الأضرحة والمعابد الرومانية.</p>
+
+                <!-- العصر الإسلامي -->
+                <h3>العصر الإسلامي</h3>
+                <img src="images/islamic-ajloun.jpg" alt="صورة تجسد عجلون في العصر الإسلامي وازدهارها">
+                <p>فتح المسلمون عجلون في القرن السابع الميلادي، وأصبحت جزءًا من الدولة الإسلامية. ازدهرت المنطقة في العصر الأموي والعباسي، وأصبحت مركزًا هامًا للتجارة والزراعة.</p>
+
+                <!-- العصر الأيوبي -->
+                <h3>العصر الأيوبي</h3>
+                <img src="images/ajloun-castle.jpg" alt="قلعة عجلون التاريخية، شاهدة على العصر الأيوبي">
+                <p>شهدت عجلون أزهى عصورها في العصر الأيوبي، حيث أمر صلاح الدين الأيوبي ببناء قلعة عجلون في عام 1184م. كان الهدف من بناء القلعة هو حماية المنطقة من الغزو الصليبي، والسيطرة على الطرق التجارية والعسكرية الهامة.</p>
+                <p>تعتبر قلعة عجلون من أبرز المعالم التاريخية في الأردن، وتتميز بتصميمها المعماري الفريد وإطلالاتها البانورامية الخلابة.</p>
+
+                <!-- العصر المملوكي والعثماني -->
+                <h3>العصر المملوكي والعثماني</h3>
+                <img src="images/mamluk-ajloun.jpg" alt="منظر لمدينة عجلون خلال فترة حكم المماليك">
+                <p>بعد سقوط الدولة الأيوبية، خضعت عجلون لحكم المماليك والعثمانيين. استمرت عجلون في الازدهار كمركز زراعي وتجاري، ولكنها تعرضت أيضًا لبعض الهجمات والاضطرابات.</p>
+
+                <!-- العصر الحديث -->
+                <h3>العصر الحديث</h3>
+                <img src="images/modern-ajloun.jpg" alt="صورة لعجلون الحديثة وتطورها العمراني">
+                <p>في القرن العشرين، أصبحت عجلون جزءًا من إمارة شرق الأردن، ثم المملكة الأردنية الهاشمية. شهدت عجلون تطورات كبيرة في مختلف المجالات، وأصبحت محافظة مزدهرة ذات طبيعة خلابة وتراث عريق.</p>
+            </section>
+
+            <!-- أهم المعالم التاريخية في عجلون -->
+            <section>
+                <h2>أهم المعالم التاريخية في عجلون</h2>
+                <ul>
+                    <li>قلعة عجلون</li>
+                    <li>موقع مار الياس</li>
+                    <li>المسجد الأثري في عجلون</li>
+                    <li>العديد من الكنائس والأضرحة الرومانية والبيزنطية</li>
+                </ul>
+            </section>
+
+            <!-- تسلسل زمني لأهم الأحداث -->
+            <section>
+                <h2>تسلسل زمني لأهم الأحداث</h2>
+                <ul class="timeline">
+                    <li>
+                        <strong class="arabic-numbers">العصور القديمة:</strong> استيطان بشري وازدهار زراعي وتجاري.
+                    </li>
+                    <li>
+                        <strong class="arabic-numbers">القرن 7 الميلادي:</strong> الفتح الإسلامي لعجلون.
+                    </li>
+                    <li>
+                        <strong class="arabic-numbers">1184م:</strong> بناء قلعة عجلون بأمر من صلاح الدين الأيوبي.
+                    </li>
+                    <li>
+                        <strong class="arabic-numbers">العصور المملوكية والعثمانية:</strong> استمرار الازدهار مع بعض التحديات.
+                    </li>
+                    <li>
+                        <strong class="arabic-numbers">القرن 20:</strong> عجلون جزء من الأردن الحديث.
+                    </li>
+                    <li>
+                        <strong class="arabic-numbers">اليوم:</strong> عجلون محافظة مزدهرة ووجهة سياحية هامة.
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 سياحة عجلون</p>
+    </footer>
+
+    <script src="js/history.js"></script>
+    <script>
+        //Hero Section  الخاصة لل تدوير  Javascript
+        const heroImages = [
+            "images/ajloun-landscape.jpg",
+            "images/islamic-ajloun.jpg",
+            "images/modern-ajloun.jpg"
+        ];
+        let currentImageIndex = 0;
+        const heroImageElement = document.querySelector('.hero-image');
+                //دالة تغير صورة  كل  ثواني  Javascript
+                function changeHeroImage() {
+            heroImageElement.classList.add('fade-out');
+            setTimeout(() => {
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                heroImageElement.src = heroImages[currentImageIndex];
+                heroImageElement.classList.remove('fade-out');
+            }, 1000); // يجب ان تتفق هذه القيمة مع مدة انتقال الزوال في  CSS
+        }
+        setInterval(changeHeroImage, 3000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المعالم السياحية - سياحة عجلون</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+         <div class="toggle-container">
+             <button id="language-toggle" class="toggle-button"><i class="fas fa-globe"></i></button>
+            <button id="dark-mode-toggle" class="toggle-button"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="right-header">
+              <h1>سياحة عجلون</h1>
+         </div>
+
+     </header>
+     <nav>
+        <div class="container">
+             <ul>
+                  <li><a href="index.html">الرئيسية</a></li>
+                 <li><a href="landmarks.html" class="active">المعالم السياحية</a></li>
+                   <li><a href="activities.html">الأنشطة والفعاليات</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+         <div class="container">
+            <section id="landmarks">
+                <h2>المعالم السياحية في عجلون</h2>
+                <p>استكشفوا أبرز المعالم التاريخية والطبيعية التي تجعل من عجلون وجهة سياحية فريدة.</p>
+                <div class="landmark">
+                    <h3>قلعة عجلون</h3>
+                     <img src="images/ajloun_castle.jpg" alt="قلعة عجلون" loading="lazy">
+                    <p>قلعة عجلون هي حصن تاريخي يعود إلى القرن الثاني عشر، بُنيت في عهد صلاح الدين الأيوبي. تتميز القلعة بإطلالات بانورامية رائعة وتاريخ غني يستحق الاكتشاف.</p>
+                </div>
+
+                <div class="landmark">
+                     <h3>محمية غابة عجلون</h3>
+                    <img src="images/ajloun_forest.jpg" alt="محمية غابة عجلون" loading="lazy">
+                     <p>محمية غابة عجلون هي منطقة محمية تهدف إلى الحفاظ على التنوع البيولوجي الفريد في المنطقة. يمكنكم الاستمتاع بمشاهدة الطيور النادرة والمشي في مسارات طبيعية خلابة.</p>
+                </div>
+
+                 <div class="landmark">
+                   <h3>قرية راجب</h3>
+                    <img src="images/rajeb.jpg" alt="قرية راجب" loading="lazy">
+                   <p>قرية راجب هي قرية جبلية تتميز بالبيوت الحجرية التقليدية والمناظر الطبيعية الساحرة. يمكنكم الاستمتاع بالهدوء والجمال الطبيعي للقرية والتعرف على ثقافة السكان المحليين.</p>
+               </div>
+
+                <div class="landmark">
+                  <h3>مخيم راسون</h3>
+                   <img src="images/rasoun.jpg" alt="مخيم راسون" loading="lazy">
+                     <p>مخيم راسون مكان رائع يطل على غابات عجلون ومزارع الزيتون ويمكنكم الاستمتاع بالمناظر الخلابة.</p>
+                </div>
+           </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 سياحة عجلون</p>
+    </footer>
+
+    <a href="https://wa.me/962775775812" target="_blank" class="whatsapp-link">
+        <img src="images/logo.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+    </a>
+ <div class="ai-assistant-container" >
+          <!-- the toggle put it to be outside the box to look nice and responsive -->
+         <button id="ai-toggle" style="
+            background: transparent;
+              border: none;
+             cursor: pointer;
+           font-size: 2rem;
+            color:#81c784;
+            position: absolute;
+            top: -2rem;
+             left: -2rem;
+         ">
+          <i class="fas fa-comment-dots"></i>
+      </button>
+           <h3>مساعد عجلون الذكي</h3>
+           <ul>
+                <li><a href="#">ما هي أفضل الأماكن السياحية؟</a></li>
+               <li><a href="#">كيف أصل إلى قلعة عجلون؟</a></li>
+               <li><a href="#">ما هي الأنشطة المتاحة؟</a></li>
+                <li><a href="#">أين أجد مطاعم جيدة؟</a></li>
+            </ul>
+       </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عجلون: بوابة الزمن الافتراضية</title>
+    <!-- تضمين Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ... نفس الستايل السابق ... */
+        :root {
+            --hologram-blue: rgba(0, 220, 255, 0.8);
+            --dark-bg: #030312;
+            --accent-gold: #FFD700;
+            --panel-bg: rgba(0, 0, 20, 0.9);
+            --transition-duration: 0.5s;
+            --font-family: 'Cairo', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            /* لمنع ظهور شريط التمرير الأفقي */
+        }
+
+        /* تهيئة المشهد الرئيسي */
+        #sceneContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        /* تأثير الهولوغرام */
+        .hologram-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--hologram-blue) 0%, transparent 70%),
+                repeating-linear-gradient(45deg, transparent 0px, transparent 2px, rgba(0, 255, 255, 0.1) 2px, rgba(0, 255, 255, 0.1) 4px);
+            mix-blend-mode: screen;
+            pointer-events: none;
+            animation: hologram 2s infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes hologram {
+            0% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        /* تنسيقات لوحة المعلومات */
+        #infoPanel {
+            position: fixed;
+            top: 50%;
+            right: -400px;
+            width: 350px;
+            max-height: 80vh;
+            /* تحديد أقصى ارتفاع للوحة */
+            transform: translateY(-50%);
+            background-color: var(--panel-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid var(--hologram-blue);
+            transition: right var(--transition-duration) ease-in-out;
+            z-index: 3;
+            overflow-y: auto;
+            /* إضافة شريط تمرير إذا تجاوز المحتوى المساحة المتاحة */
+        }
+
+        /* إضافة تنسيقات خاصة عند الوصول إلى أحجام شاشات معينة */
+        @media (max-width: 768px) {
+            #infoPanel {
+                width: 90%;
+                left: 50%;
+                right: auto;
+                /* تجاوز تحديد الجانب الأيمن */
+                transform: translate(-50%, -50%);
+                top: 10%;
+                max-height: 70vh;
+                /* تقليل الارتفاع الأقصى لتوفير مساحة أكبر */
+            }
+
+            #infoPanel h2 {
+                font-size: 1.5em;
+                /* تقليل حجم الخط للعناوين */
+            }
+
+            #infoPanel p {
+                font-size: 0.9em;
+                /* تقليل حجم الخط للنص */
+            }
+        }
+
+        #infoPanel h2 {
+            color: var(--accent-gold);
+            text-shadow: 1px 1px 2px black;
+            margin-bottom: 10px;
+        }
+
+        #infoPanel p {
+            line-height: 1.6;
+            text-shadow: 0.5px 0.5px 1px black;
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق مخطط الزمني */
+        #timelineGraph {
+            width: 100%;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* مؤشر الحدث في المخطط الزمني */
+        .timeline-event {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.8em;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        /* شريط التنقل الزمني */
+        .timeline-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 3;
+        }
+
+        /* زر التنقل الزمني */
+        .nav-button {
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--dark-bg), var(--hologram-blue));
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: background-color var(--transition-duration) ease;
+            font-family: var(--font-family);
+            font-size: 1em;
+        }
+
+        /* تأثير التحويم على الزر */
+        .nav-button:hover {
+            background: linear-gradient(45deg, var(--hologram-blue), var(--dark-bg));
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* تنسيق النموذج الثلاثي الأبعاد */
+        .hologram-model {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform var(--transition-duration) ease-in-out,
+                filter var(--transition-duration) ease;
+        }
+
+        .model-label {
+            color: var(--accent-gold);
+            margin-top: 5px;
+            font-size: 0.8em;
+            text-shadow: 1px 1px 2px black;
+            transition: color var(--transition-duration) ease;
+        }
+
+        /* مواقع النماذج المختلفة */
+        .roman-era {
+            left: 10%;
+            top: 20%;
+        }
+
+        .ayyubid-era {
+            right: 10%;
+            top: 20%;
+        }
+
+        .castle-model {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* تأثيرات التحويم */
+        .hologram-model:hover {
+            filter: brightness(1.2);
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .hologram-model:hover .model-label {
+            color: white;
+        }
+
+        /* تنسيقات التحكم في الصوت */
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        /* تنسيقات الزر الصوتي */
+        .audio-control button {
+            background: var(--panel-bg);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-duration) ease;
+        }
+
+        /* تنسيقات التحويم على الزر الصوتي */
+        .audio-control button:hover {
+            background-color: var(--hologram-blue);
+        }
+
+        /* زر العودة للصفحة الرئيسية */
+        #homeButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--dark-bg), var(--hologram-blue));
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            /* التأكد من ظهوره فوق العناصر الأخرى */
+            transition: background-color 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        /* إضافة تأثير تحويم لزر الصفحة الرئيسية */
+        #homeButton:hover {
+            background: linear-gradient(45deg, var(--hologram-blue), var(--dark-bg));
+        }
+
+        /* أنماط التذييل */
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid var(--hologram-blue);
+            margin-top: 20px;
+            position: relative;
+            z-index: 10;
+            /* Ensure it's above other elements */
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 20px;
+            text-align: right;
+            /* Right-align the text */
+        }
+
+        .footer-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--hologram-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--hologram-blue);
+            margin-top: 20px;
+        }
+
+        /* أنماط إشعار ملفات تعريف الارتباط */
+        .cookie-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 1000;
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cookie-notice a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        .cookie-notice button {
+            background-color: var(--hologram-blue);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* نمط iframe Sketchfab */
+        .sketchfab-embed-wrapper {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            /* تحسين للاستجابة */
+        }
+
+        .sketchfab-embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <button id="homeButton" onclick="location.href='index.html'"><i class="fas fa-home"></i> الصفحة
+        الرئيسية</button>
+
+    <!-- التحكم الصوتي -->
+    <div class="audio-control">
+        <button id="audioToggle"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <!-- المشهد الرئيسي -->
+    <div class="hologram-container" id="sceneContainer">
+        <div class="hologram-effect"></div>
+
+        <!-- النماذج ثلاثية الأبعاد -->
+        <div class="hologram-model roman-era" data-model-name="roman_soldier" onclick="showModel('roman_soldier')">
+            <div class="model-label">الجيش الروماني 63 ق.م</div>
+        </div>
+        <div class="hologram-model ayyubid-era" data-model-name="saladin" onclick="showModel('saladin')">
+            <div class="model-label">صلاح الدين الأيوبي 1184م</div>
+        </div>
+
+        <!-- نموذج قلعة عجلون (مضمن Sketchfab) -->
+        <div class="hologram-model castle-model" data-model-name="ajlun_castle" onclick="showModel('ajlun_castle')">
+            <div class="model-label">قلعة عجلون</div>
+            <div class="sketchfab-embed-wrapper">
+                <iframe src="https://sketchfab.com/models/f0ee4889a43d4776bf179b46706e1849/embed"
+                    title="Ajloun Castle" frameborder="0" allowfullscreen mozallowfullscreen="true"
+                    webkitallowfullscreen="true" allow="autoplay; vr; xr; accelerometer; gyroscope; orientation"
+                    execution-policy="unsafe-allow-cross-domain-apis"></iframe>
+            </div>
+        </div>
+
+        <!-- لوحة المعلومات -->
+        <div class="info-panel" id="infoPanel">
+            <h2 id="panelTitle"></h2>
+            <p id="panelContent"></p>
+            <div id="timelineGraph"></div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل الزمني -->
+    <div class="timeline-nav">
+        <button class="nav-button" onclick="showModel('roman_soldier')">الحقبة الرومانية</button>
+        <button class="nav-button" onclick="showModel('saladin')">العصر الأيوبي</button>
+        <button class="nav-button" onclick="showModel('ajlun_castle')">العصر الحديث</button>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط هامة 🔗</h3>
+                <ul>
+                    <li><a href="index.html">🏠 الصفحة الرئيسية</a></li>
+                    <li><a href="affiliate-signup.html">📝 التسجيل في برنامج التسويق</a></li>
+                    <li><a href="affiliate-login.html">🔑 تسجيل الدخول</a></li>
+                    <li><a href="terms.html">📜 الشروط والأحكام</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>تواصل معنا 📧</h3>
+                <ul>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a>📞 0775775812</a></li>
+                    <li><a>📞 0775775812</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 سياحة عجلون. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <section class="cookie-notice">
+        نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. من خلال تصفح هذا الموقع، فإنك توافق على استخدامنا
+        لملفات تعريف الارتباط. <a href="cookies-policy.html">سياسة ملفات تعريف الارتباط</a>
+        <button id="accept-cookies">موافق</button>
+    </section>
+
+    <script>
+        // وظيفة عرض النموذج (يجب تعديلها حسب احتياجاتك، قد تتطلب Unity أو مكتبة عرض ثلاثي الأبعاد)
+        function showModel(modelName) {
+            const panelTitle = document.getElementById('panelTitle');
+            const panelContent = document.getElementById('panelContent');
+
+            switch (modelName) {
+                case 'roman_soldier':
+                    panelTitle.textContent = 'الجندي الروماني';
+                    panelContent.textContent = 'معلومات عن الجيش الروماني في عجلون...';
+                    break;
+                case 'saladin':
+                    panelTitle.textContent = 'صلاح الدين الأيوبي';
+                    panelContent.textContent = 'معلومات عن دور صلاح الدين الأيوبي في المنطقة...';
+                    break;
+                case 'ajlun_castle':
+                    panelTitle.textContent = 'قلعة عجلون';
+                    panelContent.textContent = 'قلعة عجلون ، المعروفة أيضاً بقلعة الرَّبَض، هي قلعة تقع في محافظة عجلون شمال الأردن. بنيت على قمة جبل من جبال بني عوف، وترتفع 1250م عن سطح البحر. أمر ببنائها عز الدين أسامة أحد قادة صلاح الدين الأيوبي سنة 1184م - 580 هـ، وتعتبر القلعة نموذجاً للعمارة العسكرية الإسلامية التي تميزت بها الفترة الأيوبية.';
+                    break;
+                default:
+                    panelTitle.textContent = 'معلومات';
+                    panelContent.textContent = 'لا توجد معلومات متاحة لهذا النموذج.';
+            }
+
+            // عرض لوحة المعلومات (إذا كانت مخفية)
+            document.getElementById('infoPanel').style.right = '0';
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // إظهار إشعار ملفات تعريف الارتباط
+            const cookieNotice = document.querySelector('.cookie-notice');
+            cookieNotice.style.display = 'flex';
+
+            // التعامل مع النقر على زر الموافقة
+            const acceptCookiesButton = document.getElementById('accept-cookies');
+            acceptCookiesButton.addEventListener('click', function () {
+                cookieNotice.style.display = 'none';
+                // يمكنك هنا إضافة كود لحفظ الموافقة في ملفات تعريف الارتباط إذا لزم الأمر
+            });
+        });
+    </script>
+</body>
+
+</html>

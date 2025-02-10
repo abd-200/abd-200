@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تخطيط رحلتك إلى عجلون</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* تصميم الصفحة بشكل عام */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* لون خلفية فاتح */
+            color: #333;
+        }
+
+        header, nav, main, footer {
+            padding: 20px;
+        }
+
+        header {
+            /* ازالة الخلفية الزرقاء والظل السفلي */
+            text-align: center;
+            color: #333; /* لون الخط للرأس */
+            /* الاعتماد على تنسيق ملف CSS */
+        }
+
+        nav {
+            background-color: #fff; /* لون الخلفية ابيض */
+            padding: 10px 0; /* تقليل المساحة الرأسية للشريط */
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center; /* توسيط القائمة */
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #bbb;
+        }
+
+        nav a.active {
+            background-color: #4CAF50; /* لون اخضر  للزر النشط*/
+            color: white;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 960px; /* عرض ثابت للمحتوى */
+            margin: 20px auto; /* توسيط أفقي */
+            background-color: white; /* خلفية بيضاء للمحتوى */
+            border-radius: 8px; /* زوايا مدورة */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+        }
+
+        section h2 {
+            color: #4CAF50; /* لون العنوان الفرعي*/
+            border-bottom: 2px solid #4CAF50;/* خط العنوان*/
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .plan-step {
+            background-color: #f9f9f9; /* لون خلفية مختلف قليلاً */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); /* ظل أخف */
+            text-align: right;
+        }
+
+        .plan-step h3 {
+            color: #333; /* لون العنوان أغمق */
+        }
+
+        .plan-step p {
+            line-height: 1.6; /* تباعد الأسطر */
+            color: #666; /* لون نص ثانوي */
+        }
+
+        .resource-link {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background-color: #4CAF50; /*لون الربط*/
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .resource-link:hover {
+            background-color: #367c39; /* لون الزر عند الhover */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #28a745; /* لون أخضر للزر */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #218838; /* لون أخضر أغمق عند الhover */
+        }
+
+        /* تحسين موقع الزر */
+        .centered-content {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+        }
+          /*Media Queries For Small screen*/
+        @media screen and (max-width: 768px) {
+        body {
+            font-size: 14px; /* تقليل حجم الخط للصفحة */
+        }
+            header {
+            padding: 15px; /* تقليل المساحة حول العنوان */
+        }
+
+        nav ul {
+            padding: 0; /* إزالة المساحة حول القائمة */
+            margin: 0; /* إزالة الهوامش */
+        }
+
+        nav li {
+            display: block; /* جعل عناصر القائمة تظهر بشكل عمودي */
+            margin: 5px 0; /* إضافة مساحة بسيطة بين العناصر */
+            text-align: center; /* توسيط النصوص في القائمة */
+        }
+        .plan-step {
+            padding: 10px; /* تقليل المساحة الداخلية للخطوات */
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>تخطيط رحلتك إلى عجلون</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="unique-destinations.html">وجهات سياحية فريدة</a></li>
+            <li><a href="ajloun-history.html">تاريخ عجلون</a></li>
+            <li><a href="plan-trip.html" class="active">تخطيط الرحلة</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>خطوات تخطيط رحلتك</h2>
+
+            <div class="plan-step">
+                <h3>1. تحديد تواريخ الرحلة والميزانية</h3>
+                <p>ابدأ بتحديد متى تود زيارة عجلون وكم المبلغ الذي ترغب في إنفاقه. سيساعد هذا في تضييق نطاق خياراتك.</p>
+                <a href="#" class="resource-link">حاسبة الميزانية</a>
+                <a href="#" class="resource-link">التقويم السياحي لعجلون</a>
+            </div>
+
+            <div class="plan-step">
+                <h3>2. اختيار الإقامة</h3>
+                <p>اختر مكان إقامتك بناءً على ميزانيتك وتفضيلاتك. تتوفر خيارات من فنادق فاخرة إلى بيوت ضيافة اقتصادية.</p>
+                <a href="#" class="resource-link">قائمة الفنادق في عجلون</a>
+                <a href="#" class="resource-link">تقييمات بيوت الضيافة</a>
+            </div>
+
+            <div class="plan-step">
+                <h3>3. استكشاف الأماكن السياحية</h3>
+                <p>ابحث عن الأماكن السياحية التي تثير اهتمامك في عجلون. قم بإنشاء قائمة بالأماكن التي ترغب في زيارتها.</p>
+                <a href="unique-destinations.html" class="resource-link">وجهات سياحية فريدة</a>
+                <a href="#" class="resource-link">خريطة الأماكن السياحية في عجلون</a>
+            </div>
+
+            <div class="plan-step">
+                <h3>4. التخطيط للمواصلات</h3>
+                <p>حدد كيفية تنقلك في عجلون. تتوفر خيارات مثل استئجار سيارة أو استخدام وسائل النقل العامة.</p>
+                <a href="#" class="resource-link">معلومات عن وسائل النقل في عجلون</a>
+                <a href="#" class="resource-link">شركات تأجير السيارات</a>
+            </div>
+
+            <div class="plan-step">
+                <h3>5. إنشاء برنامج الرحلة</h3>
+                <p>ضع برنامجًا تفصيليًا لرحلتك، بما في ذلك الأماكن التي ستزورها في كل يوم والوقت الذي ستقضيه في كل مكان.</p>
+                <a href="#" class="resource-link">نموذج برنامج رحلة جاهز</a>
+            </div>
+
+            <div class="centered-content">
+                <a href="trip-planning.html" class="button">ابدأ التخطيط الآن</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 سياحة عجلون</p>
+    </footer>
+</body>
+</html>

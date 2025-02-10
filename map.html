@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخريطة السياحية التفاعلية لمحافظة عجلون</title>
+    
+    <!-- مكتبات Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-search@3.0.2/dist/leaflet-search.src.css">
+    
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        
+        .control-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+        
+        .filter-item {
+            margin: 8px 0;
+        }
+        
+        .popup-content {
+            text-align: right;
+            min-width: 200px;
+        }
+        
+        .popup-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="control-panel">
+    <input type="text" id="search" placeholder="ابحث عن موقع سياحي..." style="width: 100%; padding: 8px; margin-bottom: 10px;">
+    <div id="filters"></div>
+</div>
+
+<div id="map"></div>
+
+<!-- المكتبات المطلوبة -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-search@3.0.2/dist/leaflet-search.src.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+
+<script>
+// البيانات الأساسية
+const categories = {
+    touristic: { name: 'معالم سياحية', color: '#e74c3c', icon: '🏰' },
+    nature: { name: 'طبيعة', color: '#27ae60', icon: '🌳' },
+    religious: { name: 'دينية', color: '#f1c40f', icon: '🕌' },
+    historical: { name: 'تاريخية', color: '#8e44ad', icon: '🏛️' },
+    services: { name: 'خدمات', color: '#3498db', icon: '🏪' }
+};
+
+// بيانات الأماكن السياحية
+const places = [
+    {
+        title: "قلعة عجلون",
+        position: [32.3348, 35.7622],
+        category: "historical",
+        description: "قلعة إسلامية تاريخية بناها صلاح الدين الأيوبي",
+        image: "https://example.com/ajloun-castle.jpg"
+    },
+    {
+        title: "محمية غابة عجلون",
+        position: [32.3112, 35.7765],
+        category: "nature",
+        description: "محمية طبيعية تضم أشجار البلوط والصنوبر",
+        image: "https://example.com/forest.jpg"
+    },
+    {
+        title: "مقام النبي هود",
+        position: [32.3291, 35.7480],
+        category: "religious",
+        description: "مقام ديني يعتقد أنه للنبي هود عليه السلام"
+    },
+    {
+        title: "وادي كفرنجة",
+        position: [32.3213, 35.7851],
+        category: "nature",
+        description: "وادي خلاب مناسب للمشي لمسافات طويلة"
+    },
+    {
+        title: "متحف عجلون الأثري",
+        position: [32.3451, 35.7589],
+        category: "historical",
+        description: "يضم قطعاً أثرية من مختلف العصور"
+    },
+    {
+        title: "مطلات عجلون",
+        position: [32.3233, 35.7970],
+        category: "nature",
+        description: "مناظر بانورامية خلابة للمنطقة"
+    },
+    {
+        title: "عين ام الشرايط",
+        position: [32.2976, 35.7276],
+        category: "nature",
+        description: "ينابيع مائية طبيعية"
+    },
+    {
+        title: "مسجد عجلون الكبير",
+        position: [32.3671, 35.7375],
+        category: "religious",
+        description: "من أقدم المساجد في المنطقة"
+    },
+    {
+        title: "مركز زوار عجلون",
+        position: [32.3501, 35.7393],
+        category: "services",
+        description: "مركز خدمات سياحية ومعلومات"
+    }
+];
+
+// تهيئة الخريطة
+const map = L.map('map').setView([32.3272, 35.7575], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+// إنشاء الطبقات
+const layers = {
+    touristic: L.layerGroup(),
+    nature: L.layerGroup(),
+    religious: L.layerGroup(),
+    historical: L.layerGroup(),
+    services: L.layerGroup()
+};
+
+// إضافة العلامات
+places.forEach(place => {
+    const marker = L.marker(place.position, {
+        icon: L.divIcon({
+            className: 'custom-icon',
+            html: `<div style="background:${categories[place.category].color}">
+                     ${categories[place.category].icon}
+                   </div>`,
+            iconSize: [32, 32]
+        })
+    }).bindPopup(`
+        <div class="popup-content">
+            <h3>${place.title}</h3>
+            ${place.image ? `<img src="${place.image}" class="popup-image">` : ''}
+            <p>${place.description}</p>
+            <small>الفئة: ${categories[place.category].name}</small>
+        </div>
+    `);
+    
+    layers[place.category].addLayer(marker);
+});
+
+// إضافة عناصر التحكم
+L.control.layers(null, {
+    [categories.touristic.name]: layers.touristic,
+    [categories.nature.name]: layers.nature,
+    [categories.religious.name]: layers.religious,
+    [categories.historical.name]: layers.historical,
+    [categories.services.name]: layers.services
+}, { position: 'bottomright' }).addTo(map);
+
+// إضافة البحث
+const searchControl = new L.Control.Search({
+    layer: Object.values(layers).reduce((acc, layer) => acc.addLayer(layer), L.layerGroup()),
+    propertyName: 'title',
+    marker: false,
+    moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, 15);
+    }
+}).addTo(map);
+
+// إنشاء فلاتر الفئات
+const filtersContainer = document.getElementById('filters');
+Object.entries(categories).forEach(([key, category]) => {
+    const div = document.createElement('div');
+    div.className = 'filter-item';
+    div.innerHTML = `
+        <label>
+            <input type="checkbox" checked 
+                   onchange="toggleLayer('${key}')">
+            ${category.icon} ${category.name}
+        </label>
+    `;
+    filtersContainer.appendChild(div);
+});
+
+// وظيفة تبديل الطبقات
+window.toggleLayer = function(category) {
+    if (map.hasLayer(layers[category])) {
+        map.removeLayer(layers[category]);
+    } else {
+        map.addLayer(layers[category]);
+    }
+};
+
+// إضافة جميع الطبقات بشكل افتراضي
+Object.values(layers).forEach(layer => map.addLayer(layer));
+
+// إضافة مسارات المشي
+new L.GPX('data/hiking-trails.gpx', {
+    async: true,
+    polyline_options: {
+        color: '#27ae60',
+        weight: 4
+    }
+}).addTo(map);
+</script>
+
+</body>
+</html>

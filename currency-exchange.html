@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل العملات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/service.css">
+    <style>
+      .currency-converter {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          margin-top: 20px;
+      }
+
+      .currency-input {
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          width: 200px;
+      }
+
+      .currency-select {
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          width: 220px; /* Slightly wider to accommodate Arabic text */
+          direction: rtl; /* Force RTL for select */
+      }
+
+      .currency-result {
+          margin-top: 20px;
+          font-size: 1.2em;
+          font-weight: bold;
+      }
+
+      .button {
+          padding: 10px 20px;
+          background-color: #388e3c;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          margin-top: 10px;
+      }
+
+      .button:hover {
+          background-color: #1b5e20;
+      }
+
+      /* Force options in select to also be RTL */
+      .currency-select option {
+          direction: rtl;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="toggle-container">
+            <button id="dark-mode-toggle" class="toggle-button"><i class="fas fa-moon"></i></button>
+            <button id="language-toggle" class="toggle-button"><i class="fas fa-globe"></i></button>
+        </div>
+        <div class="right-header">
+            <h1>تحويل العملات</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="services.html">الخدمات السياحية</a></li>
+                <li><a href="restaurants.html">المطاعم</a></li>
+                <li><a href="cafes.html">المقاهي</a></li>
+                <li><a href="tours.html">الجولات السياحية</a></li>
+                <li><a href="guide.html">الدليل السياحي</a></li>
+                <li><a href="chat.html">الدردشة</a></li>
+                <li><a href="ar.html">نظارة AR</a></li>
+                <li><a href="store.html">المتجر</a></li>
+                <li><a href="map.html">الخريطة</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="facilities.html">دليل المرافق</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="service-details">
+            <h2>خدمة تحويل العملات في عجلون</h2>
+            <p>نوفر خدمة تحويل العملات بسهولة وأمان. يمكنك تحويل العملات الأجنبية إلى الدينار الأردني والعكس بأسعار تنافسية.</p>
+
+            <!-- Currency Converter -->
+            <div class="currency-converter">
+                <label for="amount">المبلغ:</label>
+                <input type="number" id="amount" class="currency-input" placeholder="أدخل المبلغ">
+
+                <label for="fromCurrency">من عملة:</label>
+                <select id="fromCurrency" class="currency-select">
+                    <option value="USD">دولار أمريكي (USD)</option>
+                    <option value="EUR">يورو (EUR)</option>
+                    <option value="GBP">جنيه إسترليني (GBP)</option>
+                    <option value="SAR">ريال سعودي (SAR)</option>
+                    <option value="JOD">دينار أردني (JOD)</option>
+                    <!-- Add more currencies as needed -->
+                </select>
+
+                <label for="toCurrency">إلى عملة:</label>
+                <select id="toCurrency" class="currency-select">
+                    <option value="JOD">دينار أردني (JOD)</option>
+                    <option value="USD">دولار أمريكي (USD)</option>
+                    <option value="EUR">يورو (EUR)</option>
+                    <option value="GBP">جنيه إسترليني (GBP)</option>
+                    <option value="SAR">ريال سعودي (SAR)</option>
+                    <!-- Add more currencies as needed -->
+                </select>
+
+                <button onclick="convertCurrency()" class="button">حوّل الآن</button>
+
+                <div id="result" class="currency-result"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط هامة 🔗</h3>
+                <ul>
+                    <li><a href="index.html">🏠 الصفحة الرئيسية</a></li>
+                    <li><a href="affiliate-signup.html">📝 التسجيل في برنامج التسويق</a></li>
+                    <li><a href="affiliate-login.html">🔑 تسجيل الدخول</a></li>
+                    <li><a href="terms.html">📜 الشروط والأحكام</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>تواصل معنا 📧</h3>
+                <ul>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a>📞 0775775812</a></li>
+                    <li><a>📞 0775775812</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 سياحة عجلون. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <section class="cookie-notice">
+        نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. من خلال تصفح هذا الموقع، فإنك توافق على استخدامنا لملفات تعريف الارتباط. <a href="cookies-policy.html">سياسة ملفات تعريف الارتباط</a>
+        <button id="accept-cookies">موافق</button>
+    </section>
+
+    <script src="js/app.js"></script>
+     <script>
+        function convertCurrency() {
+            const amount = document.getElementById('amount').value;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            // Basic Validation
+            if (!amount || isNaN(amount)) {
+                document.getElementById('result').innerText = "الرجاء إدخال مبلغ صالح.";
+                return;
+            }
+
+            // In a real application, you would fetch exchange rates from an API
+            // For this example, we'll use placeholder exchange rates.
+            const exchangeRates = {
+                "USD": 0.709,
+                "EUR": 0.797,
+                "GBP": 0.914,
+                "SAR": 0.189,
+                "JOD": 1
+            };
+
+            // Conversion logic
+            const baseAmount = amount / exchangeRates[fromCurrency];
+            const convertedAmount = baseAmount * exchangeRates[toCurrency];
+
+            // Display result
+            document.getElementById('result').innerText = `${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شهادة إتمام الدورة التدريبية</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/certificate.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+    <div class="certificate">
+        <div class="certificate-header">
+            <img src="images/logo.png" alt="شعار سياحة عجلون" class="logo">
+            <h1>شهادة إتمام الدورة التدريبية</h1>
+        </div>
+
+        <div class="certificate-content">
+            <p>تشهد شركة سياحة عجلون بأن</p>
+            <h2 id="certificate-name"></h2>
+            <p>قد أتم بنجاح الدورة التدريبية للتسويق بالعمولة.</p>
+
+            <div class="signature-section">
+                <img src="images/signature.png" alt="توقيع المدير" class="signature">
+                <p>توقيع المدير العام</p>
+            </div>
+        </div>
+
+        <div class="certificate-footer">
+            <img src="images/certificate_stamp.png" alt="ختم الشهادة" class="stamp">
+            <p class="date">تاريخ الإصدار: <span id="certificate-date"></span></p>
+            <p class="website">www.ajlountourism.com</p>
+        </div>
+
+        <button id="download-certificate" class="download-button">تنزيل الشهادة</button>
+    </div>
+
+    <script src="js/certificate.js"></script>
+</body>
+</html>

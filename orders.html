@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الطلبات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* تصميم عام (نفس النمط) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* الشريط الجانبي (نفس النمط) */
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #ddd;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+          .sidebar a i{
+            margin-left: 5px
+          }
+
+        /* المحتوى الرئيسي (نفس النمط) */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* تنسيق إضافي (نفس النمط) */
+        .logout-button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* تصميم جدول الطلبات */
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .order-table th, .order-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right; /* محاذاة النص إلى اليمين */
+        }
+
+        .order-table th {
+            background-color: #f0f0f0;
+        }
+               /* تنسيق لوحة الطلبات المنتجات الاعدادات*/
+
+         .dashboard-section {
+              background-color: #fff;
+    border: 1px solid #ddd;
+     margin-bottom: 20px;
+    border-radius: 8px;
+      padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+         }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- الشريط الجانبي (نفس الشريط) -->
+        <div class="sidebar">
+             <h2>لوحة التحكم</h2>
+           <ul>
+    <li><a href="dashboard.php"><i class="fas fa-tachometer-alt"></i>  نظرة عامة</a></li>
+    <li><a href="products.php"><i class="fas fa-box-open"></i> المنتجات</a></li>
+    <li><a href="orders.php"><i class="fas fa-shopping-cart"></i> الطلبات</a></li>
+    <li><a href="statistics.php"><i class="fas fa-chart-bar"></i> الإحصائيات</a></li>
+    <li><a href="settings.php"><i class="fas fa-cog"></i> الإعدادات</a></li>
+</ul>
+            <a href="logout.php" class="logout-button">تسجيل الخروج</a>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="main-content">
+            <h1>إدارة الطلبات</h1>
+ <section class="dashboard-section">
+     <h2>قائمة الطلبات</h2>
+
+            <p>هنا يمكنك عرض وإدارة طلبات العملاء.</p>
+
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم العميل</th>
+                        <th>تاريخ الطلب</th>
+                        <th>المبلغ الإجمالي</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>اسم العميل 1</td>
+                        <td>2024-01-26</td>
+                        <td>120.00</td>
+                        <td>قيد المعالجة</td>
+                        <td><a href="#">عرض التفاصيل</a> | <a href="#">تحديث الحالة</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>اسم العميل 2</td>
+                        <td>2024-01-25</td>
+                        <td>85.00</td>
+                        <td>تم الشحن</td>
+                        <td><a href="#">عرض التفاصيل</a> | <a href="#">تحديث الحالة</a></td>
+                    </tr>
+                    <!-- يمكنك إضافة المزيد من الطلبات هنا -->
+                </tbody>
+            </table>
+
+            </section>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

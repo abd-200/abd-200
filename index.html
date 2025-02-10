@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياحة عجلون</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- ملف CSS مخصص للصفحة الرئيسية -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper CSS -->
+
+    <!-- كود ترجمة جوجل -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ar',
+                includedLanguages: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                multilanguagePage: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        #google_translate_element {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* تخصيص الزر ليظهر ككرة أرضية */
+        #google_translate_element img {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .right-header h1 {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .center-header .logo {
+            width: 100px;
+        }
+
+        nav.transparent-nav {
+            background-color: transparent;
+            padding: 10px;
+        }
+
+        nav.transparent-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav.transparent-nav ul li {
+            display: inline;
+        }
+
+        nav.transparent-nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-family: 'Amiri', serif;
+        }
+
+        nav.transparent-nav ul li a.active {
+            color: #f1c40f;
+        }
+
+        section.hero {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        section.hero .button {
+            background-color: #f1c40f;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        section.hero .button:hover {
+            background-color: #d4ac0d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="toggle-container">
+            <!-- زر ترجمة جوجل بدلاً من زر تبديل اللغة -->
+            <div id="google_translate_element"></div>
+            <button id="dark-mode-toggle" class="toggle-button"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="right-header">
+            <h1>سياحة عجلون</h1>
+        </div>
+        <div class="center-header">
+            <img src="images/ajloun-logo.png" alt="شعار Ajloun" class="logo">
+        </div>
+    </header>
+
+    <nav class="transparent-nav">
+        <ul>
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="services.html">الخدمات السياحية</a></li>
+            <li><a href="restaurants.html">المطاعم</a></li>
+            <li><a href="cafes.html">المقاهي</a></li>
+            <li><a href="tours.html">الجولات السياحية</a></li>
+            <li><a href="guide.html">الدليل السياحي</a></li>
+            <li><a href="chat.html">الدردشة</a></li>
+            <li><a href="hologram-ajloun.html">الهولوجرام</a></li>
+            <li><a href="ar.html">نظارة AR</a></li>
+            <li><a href="store.html">المتجر</a></li>
+            <li><a href="map.html">الخريطة</a></li>
+            <li><a href="about.html">من نحن</a></li>
+            <li><a href="facilities.html">دليل المرافق</a></li>
+        </ul>
+    </nav>
+
+    <!-- قسم البطل (Hero Section) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>استكشف عجلون بطريقة جديدة</h2>
+            <p>اكتشف الأماكن السياحية المخفية، وتعرّف على تاريخ عجلون الغني، وخطط لرحلتك المثالية.</p>
+            <a href="tours.html" class="button dark-button">ابدأ التخطيط</a>
+        </div>
+    </section>
+
+    <!-- قسم الميزات (Features Section) -->
+    <section class="features-section">
+        <h2>لماذا تختار سياحة عجلون؟</h2>
+        <div class="features-grid">
+            <a href="unique-destinations.html" class="feature">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>وجهات سياحية فريدة</h3>
+                <p>اكتشف أماكن لا يعرفها الكثيرون.</p>
+            </a>
+            <a href="ajloun-history.html" class="feature">
+                <i class="fas fa-history"></i>
+                <h3>تاريخ عجلون</h3>
+                <p>تعرف على القصص وراء الأماكن.</p>
+            </a>
+            <a href="plan-trip.html" class="feature">
+                <i class="fas fa-route"></i>
+                <h3>تخطيط مخصص</h3>
+                <p>خطط لرحلتك بسهولة ويسر.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات (Services Section) -->
+    <section class="services-section">
+        <h2>خدماتنا المميزة</h2>
+        <div class="services-grid">
+            <a href="shipping.html" class="service">
+                <img src="images/fast-shipping.png" alt="شحن سريع">
+                <h3>شحن سريع</h3>
+                <p>احصل على منتجاتك بسرعة.</p>
+            </a>
+            <a href="payment-options.html" class="service">
+                <img src="images/online-payment.png" alt="خيارات دفع متعددة">
+                <h3>خيارات دفع متعددة</h3>
+                <p>ادفع بالطريقة التي تناسبك.</p>
+            </a>
+            <a href="support.html" class="service">
+                <img src="images/support.png" alt="دعم فني">
+                <h3>دعم فني على مدار الساعة</h3>
+                <p>نحن هنا لمساعدتك.</p>
+            </a>
+            <a href="low-cost-shipping.html" class="service">
+                <img src="images/low-cost-shipping.png" alt="شحن منخفض التكلفة">
+                <h3>شحن منخفض التكلفة</h3>
+                <p>استمتع بأقل الأسعار.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- قسم برنامج التسويق بالعمولة (Affiliate Section) -->
+    <section class="affiliate-section">
+        <h2>انضم إلى برنامج التسويق بالعمولة</h2>
+        <p>شارك في الترويج لعجلون واربح عمولة مجزية.</p>
+        <div class="affiliate-links">
+            <a href="affiliate-signup.html" class="button dark-button">سجل الآن</a>
+            <a href="affiliate-login.html" class="button dark-button">تسجيل الدخول</a>
+        </div>
+    </section>
+
+    <!-- Swiper Section -->
+    <section class="featured-places">
+        <h2>أماكن مميزة في عجلون</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/eco-tourism.jpg" alt="محمية غابات عجلون"></div>
+                <div class="swiper-slide"><img src="images/mountain.jpg" alt="جبال عجلون"></div>
+                <div class="swiper-slide"><img src="images/ajloun-castle.jpg" alt="قلعة عجلون"></div>
+
+                <!-- Add more slides as needed -->
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Footer الجديد -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط هامة 🔗</h3>
+                <ul>
+                    <li><a href="index.html">🏠 الصفحة الرئيسية</a></li>
+                    <li><a href="affiliate-signup.html">📝 التسجيل في برنامج التسويق</a></li>
+                    <li><a href="affiliate-login.html">🔑 تسجيل الدخول</a></li>
+                    <li><a href="terms.html">📜 الشروط والأحكام</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>تواصل معنا 📧</h3>
+                <ul>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a href="mailto:smadiabdalrahman446@gmail.com">✉️ smadiabdalrahman446@gmail.com</a></li>
+                    <li><a>📞 0775775812</a></li>
+                    <li><a>📞 0775775812</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 سياحة عجلون. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <section class="cookie-notice">
+        نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. من خلال تصفح هذا الموقع، فإنك توافق على استخدامنا
+        لملفات تعريف الارتباط. <a href="cookies-policy.html">سياسة ملفات تعريف الارتباط</a>
+        <button id="accept-cookies">موافق</button>
+    </section>
+
+    <script src="js/app.js"></script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+
+        // كود JavaScript لتغيير خلفية قسم Hero
+        const heroSection = document.querySelector('.hero');
+        const backgroundImages = [
+            'url("images/ajloun-castle.jpg")',
+            'url("images/eco-tourism.jpg")',
+            'url("images/mountain.jpg")'
+        ];
+        let currentImageIndex = 0;
+
+        function changeHeroBackground() {
+            heroSection.style.backgroundImage = backgroundImages[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+        }
+
+        // تغيير الخلفية كل 5 ثواني (5000 مللي ثانية)
+        setInterval(changeHeroBackground, 5000);
+        changeHeroBackground(); // تعيين الخلفية الأولية
+    </script>
+</body>
+
+</html>

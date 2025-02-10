@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجتمع العجلون السياحي - دردشة تفاعلية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #218838;  /* أخضر داكن */
+            --secondary-color: #28a745;
+            --dark-color: #343a40; /* أسود داكن */
+            --light-color: #f8f9fa; /* أبيض فاتح */
+            --gray-color: #e9ecef; /* رمادي فاتح */
+            --border-color: #dee2e6;
+            --text-color: #343a40;  /* لون النص الأساسي */
+            --hover-color: #1e7e34;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            background: var(--light-color);
+            color: var(--text-color);
+        }
+
+         /* تعديلات الهيدر */
+         .header {
+            display: flex;
+            flex-direction: column;
+            background: var(--light-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            padding: 0.5rem 1rem;
+            display: flex;
+             justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            direction: ltr;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: var(--light-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--gray-color);
+        }
+        
+        .homepage-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--dark-color);
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+             transition: all 0.2s ease-in-out;
+            
+        }
+
+        .homepage-link:hover {
+            background: var(--dark-color);
+            color: white;
+            
+        }
+        .auth-bar {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .auth-button {
+            background: var(--primary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+             transition: all 0.2s ease-in-out;
+            
+        }
+        .auth-button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* تصميم منطقة الدردشة */
+        .chat-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            background: var(--light-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            direction: rtl;
+        }
+        .message-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        
+        .message {
+           
+           max-width: 70%;
+            padding: 1rem;
+           border-radius: 1rem;
+            background: var(--gray-color);
+             margin-bottom: 0.5rem;
+             position: relative;
+        }
+        .message.sent {
+            background: var(--secondary-color);
+            color: var(--light-color);
+             align-self: flex-end; /* محاذاة الرسائل المرسلة إلى اليمين */
+        }
+         .message-meta {
+              font-size: 0.8rem;
+            color: #9ca3af; /* لون رمادي فاتح */
+            position: absolute; /* تحديد موقع الميتا بشكل مطلق */
+            bottom: 0.2rem; /* مسافة من الأسفل */
+             left: 0.5rem;
+        }
+        .message-meta.sent {
+            right: 0.5rem;
+             left: unset;
+       }
+         .message.sent-wrapper {
+              display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+        }
+
+
+        .message-input-area {
+            padding: 1.5rem;
+            border-top: 2px solid var(--border-color);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--gray-color);
+            border: none;
+            border-radius: 0.8rem;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        .message-input:focus {
+            border: 2px solid var(--secondary-color)
+        }
+
+
+        /* عناصر التحكم العامة */
+         .send-button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+             
+        }
+        .send-button:hover {
+             background: var(--primary-color)
+        }
+
+        /* استجابة الشاشة */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: row;
+                 justify-content: space-between;
+                gap: 0.5rem;
+            }
+             .header-bottom {
+                 flex-direction: column;
+                 gap: 1rem;
+                text-align: center;
+                
+            }
+             .chat-container {
+                margin: 1rem;
+                height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="control-buttons">
+                <button class="nav-button" id="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="nav-button" id="language-toggle">
+                    <i class="fas fa-globe"></i>
+                </button>
+            </div>
+              <h1 class="header-title">مجتمع الدردشة</h1>
+        </div>
+        <div class="header-bottom">
+        <a href="index.html" class="homepage-link">الصفحة الرئيسية</a>
+            <div class="auth-bar">
+                <button class="auth-button">
+                    <i class="fas fa-sign-in-alt"></i>
+                   تسجيل الدخول
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- الرسائل تظهر هنا -->
+            </div>
+            <div class="message-input-area">
+                <input type="text" class="message-input" placeholder="اكتب رسالتك هنا...">
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+       // تبديل الوضع الداكن
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if(document.body.classList.contains('dark-mode')) {
+                document.body.style.backgroundColor = '#1a202c';
+                document.body.style.color = 'white';
+            } else {
+                document.body.style.backgroundColor = 'white';
+               document.body.style.color = 'var(--text-color)';
+            }
+        });
+          // إضافة رسالة إلى منطقة الدردشة
+        const messageInput = document.querySelector('.message-input');
+        const sendButton = document.querySelector('.send-button');
+        const chatMessages = document.getElementById('chat-messages');
+
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value.trim();
+            if (messageText !== '') {
+              addMessageToChat(messageText, 'sent'); // إضافة رسالة مرسلة
+              messageInput.value = ''; // مسح حقل الإدخال
+            }
+        });
+        //دالة الإضافة رسالة
+        function addMessageToChat(message, type) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = type === 'sent' ? 'message-wrapper sent-wrapper' : 'message-wrapper';
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = message;
+            messageDiv.className = `message ${type}`;
+            const metaDiv = document.createElement('div');
+            const time = new Date();
+            const formattedTime = `${time.getHours()}:${time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()}`;
+            metaDiv.textContent = formattedTime;
+            metaDiv.className = `message-meta ${type}`;
+            messageDiv.appendChild(metaDiv);
+
+
+            messageWrapper.appendChild(messageDiv);
+            chatMessages.appendChild(messageWrapper);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
